@@ -10,4 +10,4 @@ plink --bfile broad_plink_chr$2.1 --exclude broad_plink_ambiguous.snps.chr$2 --m
 plink --bfile broad_plink_chr$2.2 --geno 0.03 --make-bed --out broad_plink_chr$2.geno --dog
 plink --bfile broad_plink_chr$2.geno --mind 0.1 --make-bed --out broad_plink_chr$2.mind --dog
 plink --bfile broad_plink_chr$2.mind --maf 0.01 --make-bed --out broad_plink_chr$2.maf --dog
-plink --bfile broad_plink_chr$2.maf --hwe 0.00005 --make-bed --out broad_plink_chr$2_gwas --dog
+plink --bfile broad_plink_chr$2.maf --hwe 0.000000000000000000005 --make-bed --out broad_plink_chr$2_gwas --dog
