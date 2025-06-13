@@ -511,6 +511,7 @@ broad_plink_chr10_gwas.fam ... done.
 From our original wisdom panel downsampled VCF files we can see how many SNVs we lose through liftover and then *PLINK* filtering.
 This could be more or less stringent, but this seems sensible for our goals here.
 
+#### SNV Table
 |Chromosome|Downsampled VCF| Liftover VCF | Final Filtered|
 |----------|-----------|--------------|---------------|
 |chr1|4326|4324|3134|
