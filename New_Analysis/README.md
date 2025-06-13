@@ -600,7 +600,7 @@ We will also do some simple filtering and create a new *refpanel* plink object f
   * `plink --bfile dog10k_plink_chrXX --maf 0.01 --mind 0.1 --geno 0.03 --make-bed --out dog10k_plink_chrXX.refpanel --dog`
 
 ### HPC Details:
-* **Runtime - Approximately 10 mins per chromosome.**
+* **Runtime - Approximately 10-20 mins per chromosome.**
 * One script is used for this:
   * [process_chr.pl](scripts/process_chr.pl) - A perl script that generates an *sbatch* script for each chromosome that will launch via *sbatch* on our HPC.
   * run without parameters it will print the commands and scripts without submitting.
@@ -642,7 +642,8 @@ The [genetic map used](https://github.com/cflerin/dog_recombination)[^4] has a m
   * `shapeit -convert --input-haps dog10k_plink_chrXX.phased --output-ref dog10k_plink_chrXX.phased.impute`
 
 ### HPC Details:
-* **Runtime - Approximately 10-28 hours per chromosome on 20 cpus each.**
+* **Runtime - Approximately 14-28 hours per chromosome on 20 cpus each.**
+* **Runtime - WARNING - Chromosome 1 takes almost 40 hours.**
 * One script is used for this:
   * [shape_it.pl](scripts/shape_it.pl) - A perl script that generates an *sbatch* script for each chromosome that will launch via *sbatch* on our HPC.
   * run without parameters it will print the commands and scripts without submitting.
