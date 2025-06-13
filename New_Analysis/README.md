@@ -818,7 +818,7 @@ The [genetic map used](https://github.com/cflerin/dog_recombination)[^4] has a m
 
 ### HPC Details:
 * **Runtime - Approximately 14-28 hours per chromosome on 20 cpus each.**
-* **Runtime - WARNING - Chromosome 1 takes almost 40 hours.**
+* **Runtime - WARNING - Chromosome 1 takes almost 36 hours.**
 * One script is used for this:
   * [shape_it.pl](scripts/shape_it.pl) - A perl script that generates an *sbatch* script for each chromosome that will launch via *sbatch* on our HPC.
   * run without parameters it will print the commands and scripts without submitting.
