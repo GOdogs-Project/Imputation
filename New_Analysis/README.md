@@ -563,7 +563,7 @@ The [genetic map used](https://github.com/cflerin/dog_recombination)[^4] has a m
   * `shapeit -convert --input-haps broad_plink_chrXX_gwas.phased --output-ref broad_plink_chrXX_gwas.phased.impute`
 
 ### HPC Details:
-* **Runtime - Approximately 2 mins per chromosome.**
+* **Runtime - Approximately 10 mins per chromosome.**
 * One script is used for this:
   * [shape_it_gwas.pl](scripts/shape_it_gwas.pl) - A perl script that generates an *sbatch* script for each chromosome that will launch via *sbatch* on our HPC.
   * run without parameters it will print the commands and scripts without submitting.
