@@ -341,6 +341,169 @@ broad_plink_chr10_gwas.log
 
 </details>
 
+<details>
+<summary>Example Output from Conversion and Filtering Step (chr10)</summary>
+
+```
+../downsampled_liftover/broad-chr10.downsampled.cf4.vcf.gz
+10
+PLINK v1.90b6.24 64-bit (6 Jun 2021)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to broad_plink_chr10.log.
+Options in effect:
+  --allow-extra-chr
+  --chr 10
+  --const-fid 0
+  --dog
+  --out broad_plink_chr10
+  --vcf ../downsampled_liftover/broad-chr10.downsampled.cf4.vcf.gz
+
+515857 MB RAM detected; reserving 257928 MB for main workspace.
+--vcf: broad_plink_chr10.bed + broad_plink_chr10.bim + broad_plink_chr10.fam
+written.
+PLINK v1.90b6.24 64-bit (6 Jun 2021)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to broad_plink_chr10.1.log.
+Options in effect:
+  --bfile broad_plink_chr10
+  --dog
+  --make-bed
+  --out broad_plink_chr10.1
+  --update-name broad_plink_chr10.names
+
+515857 MB RAM detected; reserving 257928 MB for main workspace.
+2475 variants loaded from .bim file.
+676 dogs (0 males, 0 females, 676 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to broad_plink_chr10.1.nosex .
+--update-name: 2475 values updated.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 676 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.97575.
+2475 variants and 676 dogs pass filters and QC.
+Note: No phenotypes present.
+--make-bed to broad_plink_chr10.1.bed + broad_plink_chr10.1.bim +
+broad_plink_chr10.1.fam ... done.
+PLINK v1.90b6.24 64-bit (6 Jun 2021)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to broad_plink_chr10.2.log.
+Options in effect:
+  --bfile broad_plink_chr10.1
+  --dog
+  --exclude broad_plink_ambiguous.snps.chr10
+  --make-bed
+  --out broad_plink_chr10.2
+
+515857 MB RAM detected; reserving 257928 MB for main workspace.
+2475 variants loaded from .bim file.
+676 dogs (0 males, 0 females, 676 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to broad_plink_chr10.2.nosex .
+--exclude: 2314 variants remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 676 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.975601.
+2314 variants and 676 dogs pass filters and QC.
+Note: No phenotypes present.
+--make-bed to broad_plink_chr10.2.bed + broad_plink_chr10.2.bim +
+broad_plink_chr10.2.fam ... done.
+PLINK v1.90b6.24 64-bit (6 Jun 2021)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to broad_plink_chr10.geno.log.
+Options in effect:
+  --bfile broad_plink_chr10.2
+  --dog
+  --geno 0.03
+  --make-bed
+  --out broad_plink_chr10.geno
+
+515857 MB RAM detected; reserving 257928 MB for main workspace.
+2314 variants loaded from .bim file.
+676 dogs (0 males, 0 females, 676 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to broad_plink_chr10.geno.nosex .
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 676 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.975601.
+444 variants removed due to missing genotype data (--geno).
+1870 variants and 676 dogs pass filters and QC.
+Note: No phenotypes present.
+--make-bed to broad_plink_chr10.geno.bed + broad_plink_chr10.geno.bim +
+broad_plink_chr10.geno.fam ... done.
+PLINK v1.90b6.24 64-bit (6 Jun 2021)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to broad_plink_chr10.mind.log.
+Options in effect:
+  --bfile broad_plink_chr10.geno
+  --dog
+  --make-bed
+  --mind 0.1
+  --out broad_plink_chr10.mind
+
+515857 MB RAM detected; reserving 257928 MB for main workspace.
+1870 variants loaded from .bim file.
+676 dogs (0 males, 0 females, 676 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to broad_plink_chr10.mind.nosex .
+6 dogs removed due to missing genotype data (--mind).
+IDs written to broad_plink_chr10.mind.irem .
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 670 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate in remaining samples is 0.988929.
+1870 variants and 670 dogs pass filters and QC.
+Note: No phenotypes present.
+--make-bed to broad_plink_chr10.mind.bed + broad_plink_chr10.mind.bim +
+broad_plink_chr10.mind.fam ... done.
+PLINK v1.90b6.24 64-bit (6 Jun 2021)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to broad_plink_chr10.maf.log.
+Options in effect:
+  --bfile broad_plink_chr10.mind
+  --dog
+  --maf 0.01
+  --make-bed
+  --out broad_plink_chr10.maf
+
+515857 MB RAM detected; reserving 257928 MB for main workspace.
+1870 variants loaded from .bim file.
+670 dogs (0 males, 0 females, 670 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to broad_plink_chr10.maf.nosex .
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 670 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.988929.
+11 variants removed due to minor allele threshold(s)
+(--maf/--max-maf/--mac/--max-mac).
+1859 variants and 670 dogs pass filters and QC.
+Note: No phenotypes present.
+--make-bed to broad_plink_chr10.maf.bed + broad_plink_chr10.maf.bim +
+broad_plink_chr10.maf.fam ... done.
+PLINK v1.90b6.24 64-bit (6 Jun 2021)           www.cog-genomics.org/plink/1.9/
+(C) 2005-2021 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to broad_plink_chr10_gwas.log.
+Options in effect:
+  --bfile broad_plink_chr10.maf
+  --dog
+  --hwe 0.000000000000000000005
+  --make-bed
+  --out broad_plink_chr10_gwas
+
+515857 MB RAM detected; reserving 257928 MB for main workspace.
+1859 variants loaded from .bim file.
+670 dogs (0 males, 0 females, 670 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to broad_plink_chr10_gwas.nosex .
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 670 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.988925.
+--hwe: 153 variants removed due to Hardy-Weinberg exact test.
+1706 variants and 670 dogs pass filters and QC.
+Note: No phenotypes present.
+--make-bed to broad_plink_chr10_gwas.bed + broad_plink_chr10_gwas.bim +
+broad_plink_chr10_gwas.fam ... done.
+```
+</details>
+
 ---
 
 ### Filtering Statistics
@@ -389,6 +552,7 @@ This could be more or less stringent, but this seems sensible for our goals here
 |chr37|1140|1137|880|
 |chr38|850|847|645|
 
+---
 
 ### 2. Ostrander Phasing
 
