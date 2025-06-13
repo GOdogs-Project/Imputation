@@ -287,7 +287,7 @@ broad-chr38.downsampled.cf4.vcf.gz
   * `plink --bfile broad_plink_chrXX.2 --geno 0.03 --make-bed --out broad_plink_chrXX.geno --dog`
   * `plink --bfile broad_plink_chrXX.geno --mind 0.1 --make-bed --out broad_plink_chrXX.mind --dog`
   * `plink --bfile broad_plink_chrXX.mind --maf 0.01 --make-bed --out broad_plink_chrXX.maf --dog`
-  * `plink --bfile broad_plink_chrXX.maf --hwe 0.00005 --make-bed --out broad_plink_chrXX_gwas --dog`
+  * `plink --bfile broad_plink_chrXX.maf --hwe 0.000000000000000000005 --make-bed --out broad_plink_chrXX_gwas --dog`
 
 ### HPC Details:
 * Two scripts are used for this:
