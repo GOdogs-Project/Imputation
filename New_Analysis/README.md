@@ -153,7 +153,8 @@ For each Chromosome XX (Where XX is 1-38) grab its VCF file we do the following:
 * Liftover the coordinates from *CanFam3* to *CanFam4* to match our reference.
 
 #### 1a. Downsampling
-* `./downsample.pl broad-chr*.vcf.gz`
+* Downsampling is run by a custom perl script [downsample.pl](scripts/downsample.pl).
+  * Invocation: `./downsample.pl broad-chr*.vcf.gz`
   * Takes a VCF file for a particular chromosome and removes positions not present in the [markers_v5.csv](wisdom/markers_v5.csv) file.
   * Produces a new file with `.downsampled.vcf` extension and gzips it to `.downsampled.vcf.gz`.
 
@@ -273,9 +274,6 @@ broad-chr38.downsampled.cf4.vcf.gz
 </details>
 
 #### 1c. PLINK conversion and filtering
-* Downsampling is run by a custom perl script [downsample.pl](scripts/downsample.pl).
-  * Invocation: `./downsample.pl *downsampled.cf4.vcf.gz`
-
 * Prepare a PLINK dataset for each downsampled Chromosome (XX where XX is Chr1 to Chr38).
   * `plink --const-fid 0 --vcf ../broad-chrXX.downsampled.cf4.vcf.gz --out broad_plink_chrXX --dog`
 * Fix the Name column as it still contains CHR:POS names from *cf3.1*:
@@ -292,10 +290,10 @@ broad-chr38.downsampled.cf4.vcf.gz
   * `plink --bfile broad_plink_chrXX.maf --hwe 0.00005 --make-bed --out broad_plink_chrXX_gwas --dog`
 
 ### HPC Details:
-* **Runtime - Downsampling, 5-10 mins per chromosome, PLINK: approximately 30-60secs per chromosome**.
 * Two scripts are used for this:
   * [run_chr.sh](scripts/run_chr.sh) - A generic script that runs a downsampled chromosome through the plink commands above.
   * [run_chr.pl](scripts/run_chr.pl) - A perl script that generates an *sbatch* script for each chromosome that will launch *run_chr.sh* via *sbatch* on our HPC.
+* **Runtime - Downsampling, 5-10 mins per chromosome, PLINK: approximately 30-60secs per chromosome**.
   * sbatch parameters used:
     * `--partition=PlanEx2` (use the CGS cluster).
     * `--mem=2G` (2Gb RAM needed)
