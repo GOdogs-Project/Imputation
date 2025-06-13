@@ -283,11 +283,12 @@ broad-chr38.downsampled.cf4.vcf.gz
   * `perl -lane 'if(($F[4] eq "A" && $F[5] eq "T") || ($F[4] eq "T" && $F[5] eq "A") || ($F[4] eq "C" && $F[5] eq "G") || ($F[4] eq "G" && $F[5] eq "C")){ print $F[1] }' broad_plink_chrXX.1.bim > ambiguous.snps.chrXX`
 * Exclude the ambiguous SNPs in a new plink file
   * `plink --bfile broad_plink_chrXX.1 --exclude ambiguous.snps.chrXX --make-bed --out broad_plink_chrXX.2 --dog`
-* Continue with filtering
+* Continue with filtering - We adjusted the Hard-Weinberg P-value filter as too many SNVs were being excluded given the size of the dataset.
   * `plink --bfile broad_plink_chrXX.2 --geno 0.03 --make-bed --out broad_plink_chrXX.geno --dog`
   * `plink --bfile broad_plink_chrXX.geno --mind 0.1 --make-bed --out broad_plink_chrXX.mind --dog`
   * `plink --bfile broad_plink_chrXX.mind --maf 0.01 --make-bed --out broad_plink_chrXX.maf --dog`
   * `plink --bfile broad_plink_chrXX.maf --hwe 0.000000000000000000005 --make-bed --out broad_plink_chrXX_gwas --dog`
+
 
 ### HPC Details:
 * Two scripts are used for this:
