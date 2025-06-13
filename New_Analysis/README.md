@@ -81,6 +81,178 @@ broad-chr38.vcf.gz
 
 </details>
 
+<details>
+<summary>Example Phasing Output (chr10)</summary>
+
+```
+
+Segmented HAPlotype Estimation & Imputation Tool
+  * Authors : Olivier Delaneau, Jared O'Connell, Jean-François Zagury, Jonathan Marchini
+  * Contact : send an email to the OXSTATGEN mail list https://www.jiscmail.ac.uk/cgi-bin/webadmin?A0=OXSTATGEN
+  * Webpage : https://mathgen.stats.ox.ac.uk/shapeit
+  * Version : v2.r904
+  * Date    : 13/06/2025 21:15:23
+  * LOGfile : [shapeit_13062025_21h15m23s_31cdafc1-d539-4187-9ad0-505c15dbf9d2.log]
+
+MODE -phase : PHASING GENOTYPE DATA
+  * Autosome (chr1 ... chr22)
+  * Window-based model (SHAPEIT v2)
+  * MCMC iteration
+
+Parameters :
+  * Seed : 1749845723
+  * Parallelisation: 4 threads
+  * Ref allele is NOT aligned on the reference genome
+  * MCMC: 35 iterations [7 B + 1 runs of 8 P + 20 M]
+  * Model: 100 states per window [100 H + 0 PM + 0 R + 0 COV ] / Windows of ~2.0 Mb / Ne = 200
+
+Reading site list in [broad_plink_chr10_gwas.bim]
+  * 1706 sites included
+
+Reading sample list in [broad_plink_chr10_gwas.fam]
+  * 670 samples included
+  * 670 unrelateds / 0 duos / 0 trios in 670 different families
+
+Reading genotypes in [broad_plink_chr10_gwas.bed]
+  * Plink binary file SNP-major mode
+
+Reading genetic map in [../../maps/chr10.cf3.1_map.txt]
+  * 345 genetic positions found
+  * #set=0 / #interpolated=1706
+  * Physical map [0.45 Mb -> 70.54 Mb] / Genetic map [0.00 cM -> 63.83 cM]
+
+Checking missingness and MAF...
+  * 33 individuals with high rates of missing data (>5%)
+
+Building graphs [670/670]
+  * 670 graphs / 114446 segments / ~9 SNPs per segment / 4407501 transitions
+  * 0 haploids / 670 unrelateds / 0 duos / 0 trios
+  * 1340 founder haplotypes
+
+Sampling haplotypes [670/670]
+
+Burn-in iteration [1/7] [670/670]
+
+Burn-in iteration [2/7] [670/670]
+
+Burn-in iteration [3/7] [670/670]
+
+Burn-in iteration [4/7] [670/670]
+
+Burn-in iteration [5/7] [670/670]
+
+Burn-in iteration [6/7] [670/670]
+
+Burn-in iteration [7/7] [670/670]
+
+Pruning iteration [1/8] [670/670]
+
+Pruning iteration [2/8] [670/670]
+
+Pruning iteration [3/8] [670/670]
+
+Pruning iteration [4/8] [670/670]
+
+Pruning iteration [5/8] [670/670]
+
+Pruning iteration [6/8] [670/670]
+
+Pruning iteration [7/8] [670/670]
+
+Pruning iteration [8/8] [670/670]
+
+Pruning graphs [670/670]
+  * 670 graphs / 57790 segments / ~19 SNPs per segment / 1368412 transitions
+  * 0 haploids / 670 unrelateds / 0 duos / 0 trios
+  * 1340 founder haplotypes
+
+Main iteration [1/20] [670/670]
+
+Main iteration [2/20] [670/670]
+
+Main iteration [3/20] [670/670]
+
+Main iteration [4/20] [670/670]
+
+Main iteration [5/20] [670/670]
+
+Main iteration [6/20] [670/670]
+
+Main iteration [7/20] [670/670]
+
+Main iteration [8/20] [670/670]
+
+Main iteration [9/20] [670/670]
+
+Main iteration [10/20] [670/670]
+
+Main iteration [11/20] [670/670]
+
+Main iteration [12/20] [670/670]
+
+Main iteration [13/20] [670/670]
+
+Main iteration [14/20] [670/670]
+
+Main iteration [15/20] [670/670]
+
+Main iteration [16/20] [670/670]
+
+Main iteration [17/20] [670/670]
+
+Main iteration [18/20] [670/670]
+
+Main iteration [19/20] [670/670]
+
+Main iteration [20/20] [670/670]
+
+Normalising graphs [670/670]
+
+Solving haplotypes [670/670]
+
+Writing sample list in [broad_plink_chr10_gwas.phased.sample]
+
+Writing site list and haplotypes in [broad_plink_chr10_gwas.phased.haps]
+
+Running time: 687 seconds
+
+Segmented HAPlotype Estimation & Imputation Tool
+  * Authors : Olivier Delaneau, Jared O'Connell, Jean-François Zagury, Jonathan Marchini
+  * Contact : send an email to the OXSTATGEN mail list https://www.jiscmail.ac.uk/cgi-bin/webadmin?A0=OXSTATGEN
+  * Webpage : https://mathgen.stats.ox.ac.uk/shapeit
+  * Version : v2.r904
+  * Date    : 13/06/2025 21:26:50
+  * LOGfile : [shapeit_13062025_21h26m50s_efa2ce3f-a959-4fac-909f-0e9ecb760fde.log]
+
+MODE -convert : CONVERTING/SUBSETTING SHAPEIT HAPLOTYPES
+
+Parameters :
+  * Seed : 1749846410
+  * Parallelisation: 1 threads
+  * Ref allele is NOT aligned on the reference genome
+
+Reading sample list in [broad_plink_chr10_gwas.phased.sample]
+  * 670 individuals included
+
+Reading site list and haplotypes in [broad_plink_chr10_gwas.phased.haps]
+  * 1706 sites included
+
+Mapping sites and samples of the haplotype set
+  * 1706 sites found
+  * 0 sites not found
+  * 1340 founder haplotypes
+
+Writing sample list in [broad_plink_chr10_gwas.phased.impute.samples]
+
+Writing site list in [broad_plink_chr10_gwas.phased.impute.legend]
+
+Writing haplotypes in [broad_plink_chr10_gwas.phased.impute.haplotypes]
+
+Running time: 1 seconds
+
+```
+</details>
+
 ### Dog10K Dataset
 The *Dog10k* data[^1] was downloaded as *plink* compatible files from their [website](https://dog10k.kiz.ac.cn/Home/Download). 
 This dataset is based on a new reference genome *CanFam4*. 
