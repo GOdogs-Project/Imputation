@@ -101,6 +101,7 @@ The following files were obtained (1.4Tb of data):
 
 ### Wisdom Array Postions
 Individual coordinates from the commercial wisdom array were also provided [markers_v5.csv](wisdom/markers_v5.csv).
+These should be *canFam3* coordinates.
 
 ### Canine Karyotype
 For the imputation later we want the official length of each canine chromosome from *canFam4*. We obtain this from [Ensembl](https://ftp.ensembl.org/pub/release-114/tsv/canis_lupus_familiaris/).
