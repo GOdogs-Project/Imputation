@@ -636,9 +636,15 @@ For each downsampled, prepared and pre-phased *Ostrander* chromosome, we want to
 For each Ostrander Downsampled Chromosome XX we now perform the imputation analysis using *impute2* against our *dog10k* reference.
 Again we use a HPC script (below) and we also need a genetic map.
 The [genetic map used](https://github.com/cflerin/dog_recombination)[^4] has a map of each Chromosome, this will be used for all phasing and imputation.
+
 The imputation here is carried out across the *entire* chromosome in each case we provide the chromosome length ($CHRSIZE) from the [karyotype file](etc/Canis_lupus_familiaris.ROS_Cfam_1.0.114.karyotype.tsv) described above.
   * The maps used are in the [maps folder](./maps).
   * ```impute2 -use_prephased_g -m ../maps/chr2.cf3.1_map.txt -h dog10k_plink_chr2.phased.impute.haplotypes -l dog10k_plink_chrXX.phased.impute.legend -known_haps_g broad_plink_chrXX_gwas.phased.haps -int 1 $CHRSIZE -allow_large_regions -Ne 200 -o broad_plink_chrXX_gwas.phased.impute_final -phase```
+
+We can also break each chromosome into chunks of approximately 500Mb to 1000Mb and run these individually, this has some advantages:
+  * It's supposedly more accurate as *Impute2* works better over regions of this size.
+  * It's significantly faster as large chromosomes take a number of hours as an entire unit.
+  * Later we will explore which option yields better results.
 
 ### HPC Details:
 * **Runtime - Approximately 10-28 hours per chromosome on 20 cpus each.**
