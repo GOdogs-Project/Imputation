@@ -552,6 +552,8 @@ This could be more or less stringent, but this seems sensible for our goals here
 |chr36|1118|1117|925|
 |chr37|1140|1137|880|
 |chr38|850|847|645|
+|**SUM**|**80537**|**80493**|**60917**|
+
 
 ---
 
