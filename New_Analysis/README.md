@@ -1059,9 +1059,9 @@ We can also break each chromosome into chunks of approximately 500Mb to 1000Mb a
 Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
 Please see the LICENCE file included with this program for conditions of use.
 
-The seed for the random number generator is 1736349814.
+The seed for the random number generator is 1632239422.
 
-Command-line input: /mnt/research2/anton/Eleanor_Raffan/impute_v2.3.2_x86_64_static/impute2 -use_prephased_g -m /mnt/research2/anton/Eleanor_Raffan/maps/chr2.cf3.1_map.txt -h /mnt/research2/anton/Eleanor_Raffan/dog10k/panel/dog10k_plink_chr2.phased.impute.haplotypes -l /mnt/research2/anton/Eleanor_Raffan/dog10k/panel/dog10k_plink_chr2.phased.impute.legend -known_haps_g broad_plink_chr2_gwas.phased.haps -int 1 86187811 -allow_large_regions -Ne 200 -o broad_plink_chr2_gwas.phased.impute_final_chunk1 -phase
+Command-line input: /mnt/research2/anton/Eleanor_Raffan/impute_v2.3.2_x86_64_static/impute2 -use_prephased_g -m /mnt/research2/anton/Eleanor_Raffan/maps/chr2.cf3.1_map.txt -h /mnt/research2/anton/Eleanor_Raffan/dog10k/panel/dog10k_plink_chr2.phased.impute.haplotypes -l /mnt/research2/anton/Eleanor_Raffan/dog10k/panel/dog10k_plink_chr2.phased.impute.legend -known_haps_g broad_plink_chr2_gwas.phased.haps -int 1 4788212 -allow_large_regions -Ne 200 -o broad_plink_chr2_gwas.phased.impute_final_chunk1 -phase
 
 ---------------------------------
  Nomenclature and data structure 
@@ -1099,33 +1099,33 @@ For optimal results, each successive panel (0,1,2) should contain a subset of th
 
 -reading genetic map from -m file
  --filename=[/mnt/research2/anton/Eleanor_Raffan/maps/chr2.cf3.1_map.txt]
- --read 419 SNPs in the analysis interval+buffer region
+ --read 5 SNPs in the analysis interval+buffer region
 
 -reading Panel 2 haplotypes from -known_haps_g file
  --filename=[broad_plink_chr2_gwas.phased.haps]
  --detected 668 individuals
- --read 115 SNPs in the analysis interval+buffer region
- --added 115 new SNPs based on known haplotypes
+ --read 116 SNPs in the analysis interval+buffer region
+ --added 116 new SNPs based on known haplotypes
 
 -reading Panel 0 haplotypes from -h and -l files
  --filename=[/mnt/research2/anton/Eleanor_Raffan/dog10k/panel/dog10k_plink_chr2.phased.impute.haplotypes]
  --filename=[/mnt/research2/anton/Eleanor_Raffan/dog10k/panel/dog10k_plink_chr2.phased.impute.legend]
  --detected 3974 haplotypes
- --read 483737 SNPs in the analysis interval+buffer region
+ --read 17889 SNPs in the analysis interval+buffer region
 
 -removing SNPs that violate the hierarchical data requirements
  --no SNPs removed
 
 -removing reference-only SNPs from buffer region
- --removed 0 SNPs
+ --removed 791 SNPs
 
 -checking strand alignment between Panel 2 and Panel 0 by allele labels
- --flipped strand due to allele mismatch at 0 out of 115 SNPs in Panel 2
+ --flipped strand due to allele mismatch at 0 out of 116 SNPs in Panel 2
 
 -aligning allele labels between panels
 
 -removing non-aligned genotyped SNPs
- --removed 0 out of 110 SNPs with data in multiple panels
+ --removed 0 out of 112 SNPs with data in multiple panels
 
 --------------
  Data summary 
@@ -1146,24 +1146,24 @@ For optimal results, each successive panel (0,1,2) should contain a subset of th
 -Downstream buffer region
  --0 type 0 SNPs
  --0 type 1 SNPs
- --0 type 2 SNPs
+ --7 type 2 SNPs
  --0 type 3 SNPs
- --0 total SNPs
+ --7 total SNPs
 
 -Analysis region (as defined by -int argument)
- --483627 type 0 SNPs
+ --16986 type 0 SNPs
  --0 type 1 SNPs
- --110 type 2 SNPs
- --5 type 3 SNPs
- --483742 total SNPs
+ --105 type 2 SNPs
+ --4 type 3 SNPs
+ --17095 total SNPs
 
 -Output file
- --483627 type 0 SNPs
+ --16986 type 0 SNPs
  --0 type 1 SNPs
- --110 type 2 SNPs
- --5 type 3 SNPs
+ --105 type 2 SNPs
+ --4 type 3 SNPs
 
--In total, 483742 SNPs will be used in the analysis, including 110 Panel 2 SNPs
+-In total, 17102 SNPs will be used in the analysis, including 112 Panel 2 SNPs
 
 -setting storage space
 
@@ -1173,7 +1173,7 @@ For optimal results, each successive panel (0,1,2) should contain a subset of th
 
         reference haplotypes: 3974 [Panel 0]
            study individuals: 668 [Panel 2]
-           sequence interval: [1,86187811]
+           sequence interval: [1,4788212]
                       buffer: 250 kb
                           Ne: 200
            input call thresh: 0.900
@@ -1204,21 +1204,21 @@ haploid sampling success rate: (no haploid sampling performed)
 
 The table below is based on an internal cross-validation that is performed during each IMPUTE2 run. For this analysis, the program masks the genotypes of one variant at a time in the study data (Panel 2) and imputes the masked genotypes by using the remaining study and reference data. The imputed genotypes are then compared with the original genotypes to produce the concordance statistics shown in the table. You can learn more about this procedure and the contents of the table at http://mathgen.stats.ox.ac.uk/impute/concordance_table_description.html.
 
-In the current analysis, IMPUTE2 masked, imputed, and evaluated 73480 genotypes that were called with high confidence (maximum probability >= 0.90) in the Panel 2 input file (-g or -known_haps_g).
+In the current analysis, IMPUTE2 masked, imputed, and evaluated 70140 genotypes that were called with high confidence (maximum probability >= 0.90) in the Panel 2 input file (-g or -known_haps_g).
 
 When the masked study genotypes were imputed with reference data from Panel 0, the concordance between original and imputed genotypes was as follows:
 
   Interval  #Genotypes %Concordance         Interval  %Called %Concordance
-  [0.0-0.1]          0          0.0         [ >= 0.0]   100.0         74.6
-  [0.1-0.2]          0          0.0         [ >= 0.1]   100.0         74.6
-  [0.2-0.3]          0          0.0         [ >= 0.2]   100.0         74.6
-  [0.3-0.4]          0          0.0         [ >= 0.3]   100.0         74.6
-  [0.4-0.5]       2081         42.0         [ >= 0.4]   100.0         74.6
-  [0.5-0.6]       6936         46.7         [ >= 0.5]    97.2         75.5
-  [0.6-0.7]       5756         53.6         [ >= 0.6]    87.7         78.6
-  [0.7-0.8]       6404         59.6         [ >= 0.7]    79.9         81.1
-  [0.8-0.9]       7997         66.7         [ >= 0.8]    71.2         83.7
-  [0.9-1.0]      44306         86.8         [ >= 0.9]    60.3         86.8
+  [0.0-0.1]          0          0.0         [ >= 0.0]   100.0         97.3
+  [0.1-0.2]          0          0.0         [ >= 0.1]   100.0         97.3
+  [0.2-0.3]          0          0.0         [ >= 0.2]   100.0         97.3
+  [0.3-0.4]          0          0.0         [ >= 0.3]   100.0         97.3
+  [0.4-0.5]        141         30.5         [ >= 0.4]   100.0         97.3
+  [0.5-0.6]        649         59.0         [ >= 0.5]    99.8         97.4
+  [0.6-0.7]        643         68.4         [ >= 0.6]    98.9         97.8
+  [0.7-0.8]        843         74.1         [ >= 0.7]    98.0         98.1
+  [0.8-0.9]       1264         84.7         [ >= 0.8]    96.8         98.4
+  [0.9-1.0]      66600         98.6         [ >= 0.9]    95.0         98.6
 
 -generating consensus haplotype estimates (relative to fixed input haps)
 
