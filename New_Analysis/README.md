@@ -578,6 +578,57 @@ The [genetic map used](https://github.com/cflerin/dog_recombination)[^4] has a m
     * `--cpus-per-task=4` (4 threads per job)
     * `-o XXXX,out` (output log)
     * `-e YYYY.err` (error log)
+   
+* A monitoring script [progress.pl](scripts/progress.pl) can update you on the status of the running jobs:
+
+<details>
+  <summary>Example Monitoring Output is below:</summary>
+
+
+|Chromosome	|File	|Size (MB)	|Status	|
+|-----------|-----|-----------|-------|
+|1	|dog10k_plink_chr1.refpanel.bed	|333M	|Finished: 35.38 (hours)	|
+|2	|dog10k_plink_chr2.refpanel.bed	|230M	|Finished: 19.53 (hours)	|
+|3	|dog10k_plink_chr3.refpanel.bed	|268M	|Finished: 25.98 (hours)	|
+|4	|dog10k_plink_chr4.refpanel.bed	|248M	|Finished: 22.92 (hours)	|
+|5	|dog10k_plink_chr5.refpanel.bed	|250M	|Finished: 23.02 (hours)	|
+|6	|dog10k_plink_chr6.refpanel.bed	|211M	|Finished: 17.20 (hours)	|
+|7	|dog10k_plink_chr7.refpanel.bed	|215M	|Finished: 17.94 (hours)	|
+|8	|dog10k_plink_chr8.refpanel.bed	|214M	|Finished: 19.28 (hours)	|
+|9	|dog10k_plink_chr9.refpanel.bed	|158M	|Finished: 11.86 (hours)	|
+|10	|dog10k_plink_chr10.refpanel.bed	|190M	|Finished: 14.36 (hours)	|
+|11	|dog10k_plink_chr11.refpanel.bed	|199M	|Finished: 15.95 (hours)	|
+|12	|dog10k_plink_chr12.refpanel.bed	|216M	|Pruning graphs [1110/1987]	|
+|13	|dog10k_plink_chr13.refpanel.bed	|190M	|Pruning graphs [1601/1987]	|
+|14	|dog10k_plink_chr14.refpanel.bed	|165M	|Pruning graphs [1541/1987]	|
+|15	|dog10k_plink_chr15.refpanel.bed	|173M	|Pruning graphs [551/1987]	|
+|16	|dog10k_plink_chr16.refpanel.bed	|182M	|Pruning iteration [6/8] [280/1987]	|
+|17	|dog10k_plink_chr17.refpanel.bed	|188M	|Pruning iteration [2/8] [1460/1987]	|
+|18	|dog10k_plink_chr18.refpanel.bed	|173M	|Not Started	|
+|19	|dog10k_plink_chr19.refpanel.bed	|167M	|Not Started	|
+|20	|dog10k_plink_chr20.refpanel.bed	|154M	|Not Started	|
+|21	|dog10k_plink_chr21.refpanel.bed	|164M	|Not Started	|
+|22	|dog10k_plink_chr22.refpanel.bed	|172M	|Not Started	|
+|23	|dog10k_plink_chr23.refpanel.bed	|155M	|Not Started	|
+|24	|dog10k_plink_chr24.refpanel.bed	|145M	|Not Started	|
+|25	|dog10k_plink_chr25.refpanel.bed	|159M	|Not Started	|
+|26	|dog10k_plink_chr26.refpanel.bed	|145M	|Not Started	|
+|27	|dog10k_plink_chr27.refpanel.bed	|145M	|Not Started	|
+|28	|dog10k_plink_chr28.refpanel.bed	|132M	|Not Started	|
+|29	|dog10k_plink_chr29.refpanel.bed	|135M	|Not Started	|
+|30	|dog10k_plink_chr30.refpanel.bed	|118M	|Not Started	|
+|31	|dog10k_plink_chr31.refpanel.bed	|146M	|Not Started	|
+|32	|dog10k_plink_chr32.refpanel.bed	|137M	|Not Started	|
+|33	|dog10k_plink_chr33.refpanel.bed	|99M	|Not Started	|
+|34	|dog10k_plink_chr34.refpanel.bed	|143M	|Not Started	|
+|35	|dog10k_plink_chr35.refpanel.bed	|112M	|Not Started	|
+|36	|dog10k_plink_chr36.refpanel.bed	|91M	|Not Started	|
+|37	|dog10k_plink_chr37.refpanel.bed	|95M	|Not Started	|
+|38	|dog10k_plink_chr38.refpanel.bed	|98M	|Not Started	|
+
+
+</details>
+
 
 <details>
 <summary>This should produce the following new files for each downsampled chromosome (example Chr10 below)</summary>
