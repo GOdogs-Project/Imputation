@@ -1303,13 +1303,13 @@ To perform the concordance analysis we work as follows using the [concordance.pl
     * iterate over individuals that match and call their haplotypes on both and see if they match
     * Store concordant counts and disconcordant counts for all assessible positions.
     * Compute the percentage of comparable positions that are concordant
-    * We could also compute an r^2.
-  * Save the concordance data globally, per dog and per snp to a new file
+    * We could also compute an $r^2$.
+  * Save the concordance data globally, per dog and per snp to a new file.
 * We would now be able to explore the concordance in multiple ways.
-  * Global concordance
-  * Concordance vs MAF
-  * Concordance by Dog/Breed
-  * Concordance by position on Chromosome
+  * Global concordance.
+  * Concordance vs MAF.
+  * Concordance by Dog/Breed.
+  * Concordance by position on Chromosome.
 
 ---
 
