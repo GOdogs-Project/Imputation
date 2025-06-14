@@ -125,9 +125,9 @@ samtools faidx canFam4.fa
 
 | Panel | SNVs | Individuals | Genome Build |
 |-------|------|-------------|--------------|
-|Dog10K | 51M  | 1987 | CanFam 4            |
-|Ostrander| 91M | 676 | CanFam 3.1          |
-|Wisdom|95,165 |  | CanFam 3.1              |
+|Dog10K[^1] | 51M  | 1987 | CanFam 4            |
+|Ostrander[^2]| 91M | 676 | CanFam 3.1          |
+|Wisdom[^3]|95,165 |  | CanFam 3.1              |
 
 
 ## Software Used
