@@ -1101,7 +1101,7 @@ We can also break each chromosome into chunks of approximately 5Mb to 10Mb and r
 * To actually submit the jobs run with the `--runnit` flag, e.g. `./shape_it_gwas.pl --runnit`
   * sbatch parameters used:
     * `--partition=PlanEx2` (use the CGS cluster).
-    * `--mem=60G` (60Gb RAM needed)
+    * `--mem=60G` (60Gb RAM needed) - This can be much less (e.g. 3Gb for 5Mb chunks).
     * `--ntasks=1` (1 cpu per job)
     * `--cpus-per-task=1` (1 threads per job)
     * `-o XXXX,out` (output log)
