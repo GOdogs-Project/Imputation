@@ -773,12 +773,13 @@ We will take the giant PLINK formatted datafile `dog10k.SNPs.plink` from the Dog
 We will also do some simple filtering and create a new *refpanel* plink object for each.
   * `plink --bfile ../dog10k.SNPs.plink --chr XX --make-bed --out dog10k_plink_chrXX --dog`
   * `plink --bfile dog10k_plink_chrXX --maf 0.01 --mind 0.1 --geno 0.03 --make-bed --out dog10k_plink_chrXX.refpanel --dog`
+
+
 Finally we want to fix the names and generate Minor Allele Frequencies for later.
-  * `plink2 --bfile dog10k_plink_chrXX.refpanel --set-all-var-ids @:# --make-bed --out YYYY.refpanel.names`
-  * `plink2 --bfile dog10k_plink_chrXX.refpanel.names --freq --out dog10k_plink_chrXX..refpanel.names.maf`
+  * `plink2 --bfile dog10k_plink_chrXX.refpanel --set-all-var-ids @:# --make-bed --out dog10k_plink_chrXX.refpanel.names`
+  * `plink2 --bfile dog10k_plink_chrXX.refpanel.names --freq --out dog10k_plink_chrXX.refpanel.names.maf`
 
-This generates files like: `dog10k_plink_chr31.refpanel.names.maf.afreq` 
-
+This generates files like this for Chr31: `dog10k_plink_chr31.refpanel.names.maf.afreq`.
 ```
 #CHROM  ID      REF     ALT     PROVISIONAL_REF?        ALT_FREQS       OBS_CT
 31      31:740  C       A       Y       0.0543807       3972
@@ -795,7 +796,8 @@ This generates files like: `dog10k_plink_chr31.refpanel.names.maf.afreq`
 31      31:1630 C       T       Y       0.0405133       3974
 31      31:1647 G       T       Y       0.0410166       3974
 ```
-  
+We'll use this later for the concordance analysis.
+
 
 ### HPC Details:
 * **Runtime - Approximately 10-20 mins per chromosome.**
