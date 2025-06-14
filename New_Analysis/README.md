@@ -1289,18 +1289,21 @@ Have a nice day!
 
 ---
 
-# Concordance Analysis
+# Imputation Concordance Analysis
 We now use the imputed dataset to calculate *Non-Reference Concordance* (NRC) for each variant in each individual based on the original truth dataset from WGS.
 
-To perform the concordance analysis we work as follows:
+To perform the concordance analysis we work as follows using the [concordance.pl](scripts/concordance.pl) script:
 
 * Process the imputation haplotype file for each chromosome and store the REF and ALT allele and haplotype calls.
 * Process the imputation haplotype file and store the MAF for each position.
 * Extract the sample list of 676 dogs that passed filtering through the dog10k process.
 * Extract the sample list of 668 dogs from the Ostrander VCF files
 * Process the Ostrander chromosome (liftover) VCF file, SNV by SNV
-  * If a position matches - call the haplotype and see if it matches
-  * Store disconcordant counts and concordant counts for all assessible positions.
+  * If a position matches:
+    * iterate over individuals that match and call their haplotypes on both and see if they match
+    * Store concordant counts and disconcordant counts for all assessible positions.
+    * Compute the percentage of comparable positions that are concordant
+    * We could also compute an r^2.
   * Save the concordance data globally, per dog and per snp to a new file
 * We would now be able to explore the concordance in multiple ways.
   * Global concordance
