@@ -1294,7 +1294,8 @@ We now use the imputed dataset to calculate *Non-Reference Concordance* (NRC) fo
 
 To perform the concordance analysis we work as follows using the [concordance.pl](scripts/concordance.pl) script:
 
-Invocation is as follows for a single chromosome (XX).
+Invocation is as follows for a single chromosome (XX):
+
 `./concordance.pl broad_plink_chrXX_gwas.phased.impute_final_haps.merged ../../broad-chr2.cf4.vcf.gz`
 
 This will create two new files:
