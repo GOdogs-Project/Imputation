@@ -776,6 +776,25 @@ We will also do some simple filtering and create a new *refpanel* plink object f
 Finally we want to fix the names and generate Minor Allele Frequencies for later.
   * `plink2 --bfile dog10k_plink_chrXX.refpanel --set-all-var-ids @:# --make-bed --out YYYY.refpanel.names`
   * `plink2 --bfile dog10k_plink_chrXX.refpanel.names --freq --out dog10k_plink_chrXX..refpanel.names.maf`
+
+This generates files like: `dog10k_plink_chr31.refpanel.names.maf.afreq` 
+
+```
+#CHROM  ID      REF     ALT     PROVISIONAL_REF?        ALT_FREQS       OBS_CT
+31      31:740  C       A       Y       0.0543807       3972
+31      31:822  T       A       Y       0.166667        3972
+31      31:925  G       A       Y       0.0468278       3972
+31      31:945  A       G       Y       0.167674        3972
+31      31:1024 A       G       Y       0.0370091       3972
+31      31:1186 C       T       Y       0.0239174       3972
+31      31:1192 G       T       Y       0.0239174       3972
+31      31:1215 G       T       Y       0.0475831       3972
+31      31:1343 T       C       Y       0.0460957       3970
+31      31:1404 T       C       Y       0.0306995       3974
+31      31:1529 G       A       Y       0.0362355       3974
+31      31:1630 C       T       Y       0.0405133       3974
+31      31:1647 G       T       Y       0.0410166       3974
+```
   
 
 ### HPC Details:
