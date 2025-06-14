@@ -1078,22 +1078,22 @@ The imputation here is carried out across the *entire* chromosome in each case w
   * The maps used are in the [maps folder](./maps).
   * ```impute2 -use_prephased_g -m ../maps/chr2.cf3.1_map.txt -h dog10k_plink_chr2.phased.impute.haplotypes -l dog10k_plink_chrXX.phased.impute.legend -known_haps_g broad_plink_chrXX_gwas.phased.haps -int 1 $CHRSIZE -allow_large_regions -Ne 200 -o broad_plink_chrXX_gwas.phased.impute_final -phase```
 
-We can also break each chromosome into chunks of approximately 500Mb to 1000Mb and run these individually, this has some advantages:
+We can also break each chromosome into chunks of approximately 5Mb to 10Mb and run these individually, this has some advantages:
   * It's supposedly more accurate as *Impute2* works better over regions of this size.
   * It's significantly faster as large chromosomes take a number of hours as an entire unit.
   * Later we will explore which option yields better results.
 
-* Performing the imputation in 500Mb chunks would look like follows (first chunk):
+* Performing the imputation in 5Mb chunks would look like follows (first chunk):
   * `impute2 -use_prephased_g -m ../maps/chr2.cf3.1_map.txt -h dog10k_plink_chr2.phased.impute.haplotypes -l dog10k_plink_chrXX.phased.impute.legend -known_haps_g broad_plink_chrXX_gwas.phased.haps -int 1 5000000 -allow_large_regions -Ne 200 -o broad_plink_chrXX_gwas.phased.impute_final -phase`
   * the output results (per chunk) can then be concatenated.
 
 ### HPC Details:
 * **Runtime - Approximately 10-28 hours per chromosome on 1 cpu each (whole chromsomomes).**
-* **Runtime - Approximately 30 mins per chromosome run in parallel (500Mb chunks).**
+* **Runtime - Approximately 30 mins per chromosome run in parallel (5Mb chunks).**
 * One script is used for this:
   * [impute.pl](scripts/impute.pl) - A perl script that generates an *sbatch* script for each chromosome that will launch via *sbatch* on our HPC.
 * To modify the settings around whole chromosome or chunks edit the `$chunksize` option:
-  * `$chunksize=5000000;` - Split each chromosome into 500Mb chunks
+  * `$chunksize=5000000;` - Split each chromosome into 5Mb chunks
   * `$chunksize=1000000000000000000000;` - Set arbitrarily large value to force one chunk per chromosome.
   * The chunksize option is intelligent, it will work out an appropriate and equally sized number of chunks of a size close to, but slightly smaller, than that requested.
 
