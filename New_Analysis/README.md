@@ -137,7 +137,7 @@ samtools faidx canFam4.fa
 * [bcftools](https://github.com/samtools/bcftools) - 1.19-46-gc63329bb
 * [samtools](https://github.com/samtools/samtools) - 1.19.2-7-g0c03cbd
 * [score](https://github.com/freeseek/score) - v1 2024[^5]
-* [shapeit](https://mathgen.stats.ox.ac.uk/shapeit) - Version : v2.r904 
+* [shapeit](https://mathgen.stats.ox.ac.uk/genetics_software/shapeit/shapeit.html) - Version : v2.r904 
 * [impute2](https://mathgen.stats.ox.ac.uk/impute/impute_v2.html) - version 2.3.2
 
 ---
