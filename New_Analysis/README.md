@@ -1294,6 +1294,13 @@ We now use the imputed dataset to calculate *Non-Reference Concordance* (NRC) fo
 
 To perform the concordance analysis we work as follows using the [concordance.pl](scripts/concordance.pl) script:
 
+Invocation is as follows for a single chromosome (XX).
+`./concordance.pl broad_plink_chrXX_gwas.phased.impute_final_haps.merged ../../broad-chr2.cf4.vcf.gz`
+
+This will create two new files:
+* `broad_plink_chrXX_gwas.phased.impute_final_haps.merged.concordance_ind.txt`
+* `broad_plink_chrXX_gwas.phased.impute_final_haps.merged.concordance_pos.txt`
+
 * Process the imputation haplotype file for each chromosome and store the REF and ALT allele and haplotype calls.
 * Process the imputation haplotype file and store the MAF for each position.
 * Extract the sample list of 676 dogs that passed filtering through the dog10k process.
