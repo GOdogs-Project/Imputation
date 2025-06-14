@@ -773,6 +773,10 @@ We will take the giant PLINK formatted datafile `dog10k.SNPs.plink` from the Dog
 We will also do some simple filtering and create a new *refpanel* plink object for each.
   * `plink --bfile ../dog10k.SNPs.plink --chr XX --make-bed --out dog10k_plink_chrXX --dog`
   * `plink --bfile dog10k_plink_chrXX --maf 0.01 --mind 0.1 --geno 0.03 --make-bed --out dog10k_plink_chrXX.refpanel --dog`
+Finally we want to fix the names and generate Minor Allele Frequencies for later.
+  * `plink2 --bfile dog10k_plink_chrXX.refpanel --set-all-var-ids @:# --make-bed --out YYYY.refpanel.names`
+  * `plink2 --bfile dog10k_plink_chrXX.refpanel.names --freq --out dog10k_plink_chrXX..refpanel.names.maf`
+  
 
 ### HPC Details:
 * **Runtime - Approximately 10-20 mins per chromosome.**
