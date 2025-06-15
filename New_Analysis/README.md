@@ -1334,11 +1334,11 @@ This will create two new files:
 There's two ways to assess this:
 
 #### 1. Exploration of Impute2 Statistics
-* Impute2 masks the SNPs/SNVs that were brought in from the
+* **Impute2** allows robust exploration of imputation quality.
 * For SNPs we supplied from Ostrander, the input genotypes at that SNP were  masked internally and then imputed as if the SNP were of type X. Similarly, r2_typeX is the squared correlation between input and masked/imputed genotypes at a SNP. This allows quite a robust way for Impute 2 to assess imputation accuracy.
 * We have 2 values we can explore:
-  * Concordance
-  * $r^2$
+  * Concordance: *concord_type0* 
+  * $r^2$: - *r2_type0*
 
 #### 2. Evaluation of raw SNP non-reference concordance.
 * Process the imputation haplotype file for each chromosome and store the REF and ALT allele and haplotype calls.
