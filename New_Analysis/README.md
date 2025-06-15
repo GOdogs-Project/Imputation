@@ -1339,6 +1339,8 @@ There's two ways to assess this:
 * We have 2 values we can explore:
   * Concordance: *concord_type0* 
   * $r^2$: - *r2_type0*
+* We can explore these by SNP Position, Chromosome Chunk, Chromosome.
+* Additionally, we also have sample specific info files so can explore how different individual dogs/breeds/types fare.
 
 #### 2. Evaluation of raw SNP non-reference concordance.
 * Process the imputation haplotype file for each chromosome and store the REF and ALT allele and haplotype calls.
