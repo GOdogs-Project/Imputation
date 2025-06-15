@@ -1331,6 +1331,16 @@ This will create two new files:
 
 #### Overview of Concordance Process
 
+There's two ways to assess this:
+
+#### 1. Exploration of Impute2 Statistics
+* Impute2 masks the SNPs/SNVs that were brought in from the
+* For SNPs we supplied from Ostrander, the input genotypes at that SNP were  masked internally and then imputed as if the SNP were of type X. Similarly, r2_typeX is the squared correlation between input and masked/imputed genotypes at a SNP. This allows quite a robust way for Impute 2 to assess imputation accuracy.
+* We have 2 values we can explore:
+  * Concordance
+  * $r^2$
+
+#### 2. Evaluation of raw SNP non-reference concordance.
 * Process the imputation haplotype file for each chromosome and store the REF and ALT allele and haplotype calls.
 * Process the imputation haplotype file and store the MAF for each position.
 * Extract the sample list of 676 dogs that passed filtering through the dog10k process.
