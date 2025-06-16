@@ -1519,6 +1519,18 @@ concord_type0 r2_type0
 ```
 
 
+#### Exploration of *Impute2* QC metrics.
+
+We use a number of perl scripts to globally explore the concordance and $r^2$ values:
+* Median, Standard Deviation, Average, Max and Min for:
+* Whole Chromosome chunks
+* Whole Chromosomes
+* Individuals by Chromosome
+* All Individuals globally
+
+These scripts generate *txt* files we can explore in *R/BioConductor*.
+
+
 #### 2. Evaluation of raw SNP non-reference concordance.
 * Process the imputation haplotype file for each chromosome and store the REF and ALT allele and haplotype calls.
 * Process the imputation haplotype file and store the MAF for each position.
