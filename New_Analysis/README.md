@@ -1448,23 +1448,13 @@ Have a nice day!
 ---
 
 # Imputation Concordance Analysis
-We now use the imputed dataset to calculate *Non-Reference Concordance* (NRC) for each variant in each individual based on the original truth dataset from WGS.
-
-To perform the concordance analysis we work as follows using the [concordance.pl](scripts/concordance.pl) script:
-
-#### Concordance Analysis Script
-Invocation is as follows for a single chromosome (XX):
-
-`./concordance.pl broad_plink_chrXX_gwas.phased.impute_final_haps.merged ../../broad-chr2.cf4.vcf.gz`
-
-This will create two new files:
-* `broad_plink_chrXX_gwas.phased.impute_final_haps.merged.concordance_ind.txt`
-* `broad_plink_chrXX_gwas.phased.impute_final_haps.merged.concordance_pos.txt`
+We now use the imputed dataset to explore QC metrics for imputation, for variants globally, per chromosome and  across individuals.
+We can do this two ways, buy using the Impute2 QC metrics and also comparing back to the original truth dataset from WGS.
 
 
 #### Overview of Concordance Process
 
-There's two ways to assess this:
+For the two ways to assess this:
 
 #### 1. Exploration of Impute2 Statistics
 * **Impute2** allows robust exploration of imputation quality.
@@ -1518,7 +1508,6 @@ concord_type0 r2_type0
 1.000 0.996
 ```
 
-
 #### Exploration of *Impute2* QC metrics.
 
 We use a number of perl scripts to globally explore the concordance and $r^2$ values:
@@ -1531,7 +1520,18 @@ We use a number of perl scripts to globally explore the concordance and $r^2$ va
 These scripts generate *txt* files we can explore in *R/BioConductor*.
 
 
-#### 2. Evaluation of raw SNP non-reference concordance.
+#### 2. Evaluation of raw SNP non-reference concordance back to truth dataset.
+
+To perform the concordance analysis we work as follows using the [concordance.pl](scripts/concordance.pl) script:
+
+#### Concordance Analysis Script
+Invocation is as follows for a single chromosome (XX):
+
+`./concordance.pl broad_plink_chrXX_gwas.phased.impute_final_haps.merged ../../broad-chr2.cf4.vcf.gz`
+
+This will create two new files:
+* `broad_plink_chrXX_gwas.phased.impute_final_haps.merged.concordance_ind.txt`
+* `broad_plink_chrXX_gwas.phased.impute_final_haps.merged.concordance_pos.txt`
 * Process the imputation haplotype file for each chromosome and store the REF and ALT allele and haplotype calls.
 * Process the imputation haplotype file and store the MAF for each position.
 * Extract the sample list of 676 dogs that passed filtering through the dog10k process.
