@@ -1099,11 +1099,11 @@ For each Ostrander Downsampled Chromosome XX we now perform the imputation analy
 Again we use a HPC script (below) and we also need a genetic map.
 The [genetic map used](https://github.com/cflerin/dog_recombination)[^4] has a map of each Chromosome, this will be used for all phasing and imputation.
 
-The imputation here is carried out across the *entire* chromosome in each case we provide the chromosome length ($CHRSIZE) from the [karyotype file](etc/Canis_lupus_familiaris.ROS_Cfam_1.0.114.karyotype.tsv) described above.
+The imputation example below is carried out across the *entire* chromosome in each case we provide the chromosome length ($CHRSIZE) from the [karyotype file](etc/Canis_lupus_familiaris.ROS_Cfam_1.0.114.karyotype.tsv) described above.
   * The maps used are in the [maps folder](./maps).
   * ```impute2 -use_prephased_g -m ../maps/chr2.cf3.1_map.txt -h dog10k_plink_chr2.phased.impute.haplotypes -l dog10k_plink_chrXX.phased.impute.legend -known_haps_g broad_plink_chrXX_gwas.phased.haps -int 1 $CHRSIZE -allow_large_regions -Ne 200 -o broad_plink_chrXX_gwas.phased.impute_final -phase```
 
-We can also break each chromosome into chunks of approximately 5Mb to 10Mb and run these individually, this has some advantages:
+We can also break each chromosome into chunks of approximately 5Mb to 10Mb and run these individually, this has some key advantages:
   * It's supposedly more accurate as *Impute2* works better over regions of this size.
   * It's significantly faster as large chromosomes take a number of hours as an entire unit.
   * Later we will explore which option yields better results.
@@ -1111,16 +1111,18 @@ We can also break each chromosome into chunks of approximately 5Mb to 10Mb and r
 * Performing the imputation in 5Mb chunks would look like follows (first chunk):
   * `impute2 -use_prephased_g -m ../maps/chr2.cf3.1_map.txt -h dog10k_plink_chr2.phased.impute.haplotypes -l dog10k_plink_chrXX.phased.impute.legend -known_haps_g broad_plink_chrXX_gwas.phased.haps -int 1 5000000 -allow_large_regions -Ne 200 -o broad_plink_chrXX_gwas.phased.impute_final -phase`
   * the output results (per chunk) can then be concatenated.
+  * The script below will use 5Mb chunking and create sub_folders for the results of each imputation, e.g. `impute_chr2/`.
 
 ### HPC Details:
 * **Runtime - Approximately 10-28 hours per chromosome on 1 cpu each (whole chromsomomes).**
-* **Runtime - Approximately 30 mins per chromosome run in parallel (5Mb chunks).**
+* **Runtime - Approximately up to 30 mins per chromosome run in parallel (5Mb chunks).**
 * One script is used for this:
   * [impute.pl](scripts/impute.pl) - A perl script that generates an *sbatch* script for each chromosome that will launch via *sbatch* on our HPC.
 * To modify the settings around whole chromosome or chunks edit the `$chunksize` option:
   * `$chunksize=5000000;` - Split each chromosome into 5Mb chunks
   * `$chunksize=1000000000000000000000;` - Set arbitrarily large value to force one chunk per chromosome.
   * The chunksize option is intelligent, it will work out an appropriate and equally sized number of chunks of a size close to, but slightly smaller, than that requested.
+  * We may want to explore `-k` options and running full *MCMC* to improve accuracy later.
 
 * run without parameters it will print the commands and scripts without submitting.
 * To actually submit the jobs run with the `--runnit` flag, e.g. `./shape_it_gwas.pl --runnit`
@@ -1131,6 +1133,137 @@ We can also break each chromosome into chunks of approximately 5Mb to 10Mb and r
     * `--cpus-per-task=1` (1 threads per job)
     * `-o XXXX,out` (output log)
     * `-e YYYY.err` (error log)
+
+<details>
+  <summary>Files produced for one Chromosome (chr2, 18 chunks of approx 5Mb)</summary>
+
+```
+broad_plink_chr2_gwas.phased.impute_final_chunk1
+broad_plink_chr2_gwas.phased.impute_final_chunk10
+broad_plink_chr2_gwas.phased.impute_final_chunk10_allele_probs
+broad_plink_chr2_gwas.phased.impute_final_chunk10_haps
+broad_plink_chr2_gwas.phased.impute_final_chunk10_info
+broad_plink_chr2_gwas.phased.impute_final_chunk10_info_by_sample
+broad_plink_chr2_gwas.phased.impute_final_chunk10_summary
+broad_plink_chr2_gwas.phased.impute_final_chunk10_warnings
+broad_plink_chr2_gwas.phased.impute_final_chunk11
+broad_plink_chr2_gwas.phased.impute_final_chunk11_allele_probs
+broad_plink_chr2_gwas.phased.impute_final_chunk11_haps
+broad_plink_chr2_gwas.phased.impute_final_chunk11_info
+broad_plink_chr2_gwas.phased.impute_final_chunk11_info_by_sample
+broad_plink_chr2_gwas.phased.impute_final_chunk11_summary
+broad_plink_chr2_gwas.phased.impute_final_chunk11_warnings
+broad_plink_chr2_gwas.phased.impute_final_chunk12
+broad_plink_chr2_gwas.phased.impute_final_chunk12_allele_probs
+broad_plink_chr2_gwas.phased.impute_final_chunk12_haps
+broad_plink_chr2_gwas.phased.impute_final_chunk12_info
+broad_plink_chr2_gwas.phased.impute_final_chunk12_info_by_sample
+broad_plink_chr2_gwas.phased.impute_final_chunk12_summary
+broad_plink_chr2_gwas.phased.impute_final_chunk12_warnings
+broad_plink_chr2_gwas.phased.impute_final_chunk13
+broad_plink_chr2_gwas.phased.impute_final_chunk13_allele_probs
+broad_plink_chr2_gwas.phased.impute_final_chunk13_haps
+broad_plink_chr2_gwas.phased.impute_final_chunk13_info
+broad_plink_chr2_gwas.phased.impute_final_chunk13_info_by_sample
+broad_plink_chr2_gwas.phased.impute_final_chunk13_summary
+broad_plink_chr2_gwas.phased.impute_final_chunk13_warnings
+broad_plink_chr2_gwas.phased.impute_final_chunk14
+broad_plink_chr2_gwas.phased.impute_final_chunk14_allele_probs
+broad_plink_chr2_gwas.phased.impute_final_chunk14_haps
+broad_plink_chr2_gwas.phased.impute_final_chunk14_info
+broad_plink_chr2_gwas.phased.impute_final_chunk14_info_by_sample
+broad_plink_chr2_gwas.phased.impute_final_chunk14_summary
+broad_plink_chr2_gwas.phased.impute_final_chunk14_warnings
+broad_plink_chr2_gwas.phased.impute_final_chunk15
+broad_plink_chr2_gwas.phased.impute_final_chunk15_allele_probs
+broad_plink_chr2_gwas.phased.impute_final_chunk15_haps
+broad_plink_chr2_gwas.phased.impute_final_chunk15_info
+broad_plink_chr2_gwas.phased.impute_final_chunk15_info_by_sample
+broad_plink_chr2_gwas.phased.impute_final_chunk15_summary
+broad_plink_chr2_gwas.phased.impute_final_chunk15_warnings
+broad_plink_chr2_gwas.phased.impute_final_chunk16
+broad_plink_chr2_gwas.phased.impute_final_chunk16_allele_probs
+broad_plink_chr2_gwas.phased.impute_final_chunk16_haps
+broad_plink_chr2_gwas.phased.impute_final_chunk16_info
+broad_plink_chr2_gwas.phased.impute_final_chunk16_info_by_sample
+broad_plink_chr2_gwas.phased.impute_final_chunk16_summary
+broad_plink_chr2_gwas.phased.impute_final_chunk16_warnings
+broad_plink_chr2_gwas.phased.impute_final_chunk17_summary
+broad_plink_chr2_gwas.phased.impute_final_chunk17_warnings
+broad_plink_chr2_gwas.phased.impute_final_chunk18
+broad_plink_chr2_gwas.phased.impute_final_chunk18_allele_probs
+broad_plink_chr2_gwas.phased.impute_final_chunk18_haps
+broad_plink_chr2_gwas.phased.impute_final_chunk18_info
+broad_plink_chr2_gwas.phased.impute_final_chunk18_info_by_sample
+broad_plink_chr2_gwas.phased.impute_final_chunk18_summary
+broad_plink_chr2_gwas.phased.impute_final_chunk18_warnings
+broad_plink_chr2_gwas.phased.impute_final_chunk1_allele_probs
+broad_plink_chr2_gwas.phased.impute_final_chunk1_haps
+broad_plink_chr2_gwas.phased.impute_final_chunk1_info
+broad_plink_chr2_gwas.phased.impute_final_chunk1_info_by_sample
+broad_plink_chr2_gwas.phased.impute_final_chunk1_summary
+broad_plink_chr2_gwas.phased.impute_final_chunk1_warnings
+broad_plink_chr2_gwas.phased.impute_final_chunk2
+broad_plink_chr2_gwas.phased.impute_final_chunk2_allele_probs
+broad_plink_chr2_gwas.phased.impute_final_chunk2_haps
+broad_plink_chr2_gwas.phased.impute_final_chunk2_info
+broad_plink_chr2_gwas.phased.impute_final_chunk2_info_by_sample
+broad_plink_chr2_gwas.phased.impute_final_chunk2_summary
+broad_plink_chr2_gwas.phased.impute_final_chunk2_warnings
+broad_plink_chr2_gwas.phased.impute_final_chunk3
+broad_plink_chr2_gwas.phased.impute_final_chunk3_allele_probs
+broad_plink_chr2_gwas.phased.impute_final_chunk3_haps
+broad_plink_chr2_gwas.phased.impute_final_chunk3_info
+broad_plink_chr2_gwas.phased.impute_final_chunk3_info_by_sample
+broad_plink_chr2_gwas.phased.impute_final_chunk3_summary
+broad_plink_chr2_gwas.phased.impute_final_chunk3_warnings
+broad_plink_chr2_gwas.phased.impute_final_chunk4
+broad_plink_chr2_gwas.phased.impute_final_chunk4_allele_probs
+broad_plink_chr2_gwas.phased.impute_final_chunk4_haps
+broad_plink_chr2_gwas.phased.impute_final_chunk4_info
+broad_plink_chr2_gwas.phased.impute_final_chunk4_info_by_sample
+broad_plink_chr2_gwas.phased.impute_final_chunk4_summary
+broad_plink_chr2_gwas.phased.impute_final_chunk4_warnings
+broad_plink_chr2_gwas.phased.impute_final_chunk5
+broad_plink_chr2_gwas.phased.impute_final_chunk5_allele_probs
+broad_plink_chr2_gwas.phased.impute_final_chunk5_haps
+broad_plink_chr2_gwas.phased.impute_final_chunk5_info
+broad_plink_chr2_gwas.phased.impute_final_chunk5_info_by_sample
+broad_plink_chr2_gwas.phased.impute_final_chunk5_summary
+broad_plink_chr2_gwas.phased.impute_final_chunk5_warnings
+broad_plink_chr2_gwas.phased.impute_final_chunk6
+broad_plink_chr2_gwas.phased.impute_final_chunk6_allele_probs
+broad_plink_chr2_gwas.phased.impute_final_chunk6_haps
+broad_plink_chr2_gwas.phased.impute_final_chunk6_info
+broad_plink_chr2_gwas.phased.impute_final_chunk6_info_by_sample
+broad_plink_chr2_gwas.phased.impute_final_chunk6_summary
+broad_plink_chr2_gwas.phased.impute_final_chunk6_warnings
+broad_plink_chr2_gwas.phased.impute_final_chunk7
+broad_plink_chr2_gwas.phased.impute_final_chunk7_allele_probs
+broad_plink_chr2_gwas.phased.impute_final_chunk7_haps
+broad_plink_chr2_gwas.phased.impute_final_chunk7_info
+broad_plink_chr2_gwas.phased.impute_final_chunk7_info_by_sample
+broad_plink_chr2_gwas.phased.impute_final_chunk7_summary
+broad_plink_chr2_gwas.phased.impute_final_chunk7_warnings
+broad_plink_chr2_gwas.phased.impute_final_chunk8
+broad_plink_chr2_gwas.phased.impute_final_chunk8_allele_probs
+broad_plink_chr2_gwas.phased.impute_final_chunk8_haps
+broad_plink_chr2_gwas.phased.impute_final_chunk8_info
+broad_plink_chr2_gwas.phased.impute_final_chunk8_info_by_sample
+broad_plink_chr2_gwas.phased.impute_final_chunk8_summary
+broad_plink_chr2_gwas.phased.impute_final_chunk8_warnings
+broad_plink_chr2_gwas.phased.impute_final_chunk9
+broad_plink_chr2_gwas.phased.impute_final_chunk9_allele_probs
+broad_plink_chr2_gwas.phased.impute_final_chunk9_haps
+broad_plink_chr2_gwas.phased.impute_final_chunk9_info
+broad_plink_chr2_gwas.phased.impute_final_chunk9_info_by_sample
+broad_plink_chr2_gwas.phased.impute_final_chunk9_summary
+broad_plink_chr2_gwas.phased.impute_final_chunk9_warnings
+```
+
+</details>
+
+
 
 <details>
   <summary>Output Imputation Log Example (Chromosome 2)</summary>
