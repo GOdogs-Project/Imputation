@@ -1475,6 +1475,50 @@ There's two ways to assess this:
 * We can explore these by SNP Position, Chromosome Chunk, Chromosome.
 * Additionally, we also have sample specific info files so can explore how different individual dogs/breeds/types fare.
 
+#### Example QC output from *impute2*
+This is the type of data produced for chromosome1. The last two columns show the concordance and $r^2$.
+```
+snp_id rs_id position a0 a1 exp_freq_a1 info certainty type info_type0 concord_type0 r2_type0
+1 1:34533898 34533898 T C 0.824 1.000 1.000 2 0.876 0.896 0.714
+1 1:34556174 34556174 C A 0.497 1.000 1.000 2 0.923 0.885 0.786
+1 1:34582419 34582419 A C 0.584 1.000 1.000 2 0.922 0.896 0.808
+1 1:34598722 34598722 C T 0.584 1.000 1.000 2 0.906 0.867 0.745
+1 1:34702504 34702504 A G 0.665 1.000 1.000 2 0.883 0.826 0.711
+1 1:34730426 34730426 T C 0.715 1.000 1.000 2 0.883 0.836 0.648
+1 1:34742583 34742583 C T 0.762 1.000 1.000 2 0.903 0.863 0.678
+1 1:34766687 34766687 T C 0.546 1.000 1.000 2 0.904 0.846 0.747
+1 1:34782808 34782808 C T 0.691 1.000 1.000 2 0.878 0.851 0.713
+1 1:34800994 34800994 T C 0.796 1.000 1.000 2 0.864 0.845 0.620
+1 1:34831956 34831956 A G 0.806 1.000 1.000 2 0.880 0.875 0.649
+1 1:34883307 34883307 A G 0.592 1.000 1.000 2 0.888 0.875 0.778
+1 1:34908754 34908754 A G 0.817 1.000 1.000 2 0.978 0.984 0.960
+1 1:34919792 34919792 T G 0.835 1.000 1.000 2 0.981 0.988 0.974
+1 1:34946032 34946032 A G 0.805 1.000 1.000 2 0.977 0.976 0.935
+1 1:34956621 34956621 C A 0.702 1.000 1.000 2 0.944 0.934 0.882
+1 1:35008786 35008786 G T 0.746 1.000 1.000 2 0.928 0.918 0.825
+1 1:35035399 35035399 A G 0.921 1.000 1.000 2 0.947 0.964 0.828
+```
+
+We also have QC metrics (concordance and $r^2$ for each individual in that chromosome chunk.
+In this case each individual has a specific line in their original order.
+```
+concord_type0 r2_type0
+0.986 0.977
+0.966 0.943
+1.000 1.000
+0.979 0.950
+0.973 0.939
+0.986 0.970
+0.945 0.915
+0.945 0.889
+0.884 0.751
+0.842 0.557
+0.973 0.946
+0.986 0.977
+1.000 0.996
+```
+
+
 #### 2. Evaluation of raw SNP non-reference concordance.
 * Process the imputation haplotype file for each chromosome and store the REF and ALT allele and haplotype calls.
 * Process the imputation haplotype file and store the MAF for each position.
