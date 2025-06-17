@@ -1,10 +1,11 @@
 # Imputation Analysis for Eleanor Raffan Lab
 Analysis carried out by Anton Enright (aje39@cam.ac.uk) in consultation with Jade Scardham and Eleanor Raffan (PDN). The workflow used here is adapted from the GODogs Imputation workflow elsewhere on github.
+
 This is part of the [**GODogs**](https://www.godogs.org.uk/) Project.
 
 # Overview
 This is an exploration of how imputable array-level data might be against the powerful reference dataset of the *Dog10k* dataset[^1].
-In order to test this we take a set of variants deteted from the sequencing of 676 canines[^2] which we will refer to as the *Ostrander* dataset.
+In order to test this we take a set of variants detected from the sequencing of 676 canines[^2] which we will refer to as the *Ostrander* dataset.
 Each VCF file from the *Ostrander* dataset is downsampled such that new VCFs containing a restricted number of variants present on the commercial [wisdom array](https://www.wisdompanel.com/en-gb)[^3].
 The idea here is to downsample *Ostrander* to the level of the wisdom array and then impute back up using *Dog10k* as the reference panel.
 
@@ -84,7 +85,7 @@ broad-chr38.vcf.gz
 ### Dog10K Dataset
 The *Dog10k* data[^1] was downloaded as *plink* compatible files from their [website](https://dog10k.kiz.ac.cn/Home/Download). 
 This dataset is based on a new reference genome *CanFam4*. 
-The following files were obtained (1.4Tb of data): 
+The following files were obtained (1.4Tb of data total): 
 
 |Size | Filename |
 |-----|----------|
@@ -283,7 +284,7 @@ broad-chr38.downsampled.cf4.vcf.gz
   * `perl -lane 'if(($F[4] eq "A" && $F[5] eq "T") || ($F[4] eq "T" && $F[5] eq "A") || ($F[4] eq "C" && $F[5] eq "G") || ($F[4] eq "G" && $F[5] eq "C")){ print $F[1] }' broad_plink_chrXX.1.bim > ambiguous.snps.chrXX`
 * Exclude the ambiguous SNPs in a new plink file
   * `plink --bfile broad_plink_chrXX.1 --exclude ambiguous.snps.chrXX --make-bed --out broad_plink_chrXX.2 --dog`
-* Continue with filtering - We adjusted the Hard-Weinberg P-value filter as too many SNVs were being excluded given the size of the dataset.
+* Continue with filtering - We adjusted the Hardy-Weinberg P-value filter as too many SNVs were being excluded given the size of the dataset.
   * `plink --bfile broad_plink_chrXX.2 --geno 0.03 --make-bed --out broad_plink_chrXX.geno --dog`
   * `plink --bfile broad_plink_chrXX.geno --mind 0.1 --make-bed --out broad_plink_chrXX.mind --dog`
   * `plink --bfile broad_plink_chrXX.mind --maf 0.01 --make-bed --out broad_plink_chrXX.maf --dog`
@@ -769,13 +770,13 @@ Running time: 1 seconds
 
 ### 3. Dog10K Preparation
 
-We will take the giant PLINK formatted datafile `dog10k.SNPs.plink` from the Dog10K dataset and split it first into individual chromosome (XX is the Chr number), PLINK files.
+We will take the giant *PLINK* formatted datafile `dog10k.SNPs.plink` from the *Dog10K* dataset and split it first into individual chromosome (XX is the Chr number), *PLINK* files.
 We will also do some simple filtering and create a new *refpanel* plink object for each.
   * `plink --bfile ../dog10k.SNPs.plink --chr XX --make-bed --out dog10k_plink_chrXX --dog`
   * `plink --bfile dog10k_plink_chrXX --maf 0.01 --mind 0.1 --geno 0.03 --make-bed --out dog10k_plink_chrXX.refpanel --dog`
 
 
-Finally we want to fix the names and generate Minor Allele Frequencies for later.
+Finally we want to fix the names and generate Minor Allele Frequencies (MAF) for later.
   * `plink2 --bfile dog10k_plink_chrXX.refpanel --set-all-var-ids @:# --make-bed --out dog10k_plink_chrXX.refpanel.names`
   * `plink2 --bfile dog10k_plink_chrXX.refpanel.names --freq --out dog10k_plink_chrXX.refpanel.names.maf`
 
@@ -1094,7 +1095,7 @@ Running time: 474 seconds
 
 ### 5. Imputation
 
-For each downsampled, prepared and pre-phased *Ostrander* chromosome, we want to now impute it against our new prepared and phased Dog10K reference panel.
+For each downsampled, prepared and pre-phased *Ostrander* chromosome, we want to now impute it against our new prepared and phased *Dog10K* reference panel.
 For each Ostrander Downsampled Chromosome XX we now perform the imputation analysis using *impute2* against our *dog10k* reference.
 Again we use a HPC script (below) and we also need a genetic map.
 The [genetic map used](https://github.com/cflerin/dog_recombination)[^4] has a map of each Chromosome, this will be used for all phasing and imputation.
@@ -1106,7 +1107,7 @@ The imputation example below is carried out across the *entire* chromosome in ea
 We can also break each chromosome into chunks of approximately 5Mb to 10Mb and run these individually, this has some key advantages:
   * It's supposedly more accurate as *Impute2* works better over regions of this size.
   * It's significantly faster as large chromosomes take a number of hours as an entire unit.
-  * Later we will explore which option yields better results.
+  * An explorataion from Chromosome 2 demonstrated that imputation on 5Mb chunks yielded better $r^2$ and *concordance* values.
 
 * Performing the imputation in 5Mb chunks would look like follows (first chunk):
   * `impute2 -use_prephased_g -m ../maps/chr2.cf3.1_map.txt -h dog10k_plink_chr2.phased.impute.haplotypes -l dog10k_plink_chrXX.phased.impute.legend -known_haps_g broad_plink_chrXX_gwas.phased.haps -int 1 5000000 -allow_large_regions -Ne 200 -o broad_plink_chrXX_gwas.phased.impute_final -phase`
@@ -1510,12 +1511,12 @@ concord_type0 r2_type0
 
 #### Exploration of *Impute2* QC metrics.
 
-We use a number of custom perl scripts to globally explore the concordance and $r^2$ values:
+We use a number of custom perl scripts to globally explore the QC metrics including *info*, *concordance* and $r^2$ values:
 * Median, Standard Deviation, Average, Max and Min for:
-* Whole Chromosome chunks
-* Whole Chromosomes
-* Individuals by Chromosome
-* All Individuals globally
+* Whole Chromosome chunks.
+* Whole Chromosomes.
+* Individuals by Chromosome.
+* All Individuals globally.
 * The scripts are as follows:
   * [process_stats.pl](scripts/process_stats.pl)
   * [process_persnp_stats.pl](scripts/process_persnp_stats.pl)
