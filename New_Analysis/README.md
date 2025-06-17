@@ -1519,6 +1519,22 @@ We use a number of perl scripts to globally explore the concordance and $r^2$ va
 
 These scripts generate *txt* files we can explore in *R/BioConductor*.
 
+From the folder where imputation was run we do:
+```
+./process_stats.pl impute_*/*_info > all_stats_by_chunk.txt
+./process_persnp_stats.pl
+./process_stats_individual.pl impute_chr* > all_stats_by_individual.txt
+```
+
+This should generate the following files:
+```
+all_stats_by_chunk.txt
+all_stats_by_chr.txt
+all_stats_by_individual.txt
+```
+
+These three files will be used in the *R/Bioconductor* analysis below.
+
 # R/BioConductor Analysis
 
 The R workflow is shown in this [markdown document](analysis/Imputation_Analysis.md).
