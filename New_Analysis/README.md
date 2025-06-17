@@ -1548,7 +1548,7 @@ Some key plots are shown here, but check the *R markdown* for a more complete pi
 
 ![boxplot1](analysis/Imputation_Analysis_files/figure-gfm/unnamed-chunk-2-1.png)
 
-![boxplot2](analysis/Imputation_Analysis_files/figure-gfm/unnamed-chunk-4-2.png)
+![boxplot2](analysis/Imputation_Analysis_files/figure-gfm/unnamed-chunk-4-1.png)
 
 #### 2. Evaluation of raw SNP non-reference concordance back to truth dataset.
 
