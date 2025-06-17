@@ -160,7 +160,7 @@ ggplot(data,aes(x=maf,y=concordance,color=info)) + geom_point(alpha = .5, shape 
 ![](Imputation_Analysis_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
 ``` r
-ggplot(data,aes(x=maf,y=concordance,color=info)) + geom_point(alpha = .5, shape = 15) + geom_hline(yintercept = 0.85) + coord_cartesian(ylim = c(0, 1.0),xlim = c(0, 1.0)) + ggtitle("r2 vs MAF")
+ggplot(data,aes(x=maf,y=r2,color=info)) + geom_point(alpha = .5, shape = 15) + geom_hline(yintercept = 0.85) + coord_cartesian(ylim = c(0, 1.0),xlim = c(0, 1.0)) + ggtitle("r2 vs MAF")
 ```
 
 ![](Imputation_Analysis_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
