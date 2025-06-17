@@ -1,7 +1,7 @@
 Imputation Data Analysis
 ================
 Anton Enright (<aje39@cam.ac.uk>)
-16 June, 2025
+17 June, 2025
 
 - [Imputation Analysis](#imputation-analysis)
 - [Load Libraries](#load-libraries)
@@ -64,6 +64,17 @@ p
 
 ![](Imputation_Analysis_files/figure-gfm/unnamed-chunk-2-2.png)<!-- -->
 
+``` r
+data_chunk <- read.table("all_stats_by_chunk.txt",header=T,sep="\t")
+
+ggplot(data_chunk, aes(x = r2_med, y = con_med, color = chrom)) +
+  geom_point()  + coord_cartesian(ylim = c(0, 1.0),xlim = c(0, 1.0)) + ggtitle("r2 and concordance per chromosome chunk") +
+  xlab("r2") + ylab("concordance") + geom_hline(yintercept = c(0.85, 0.9, 0.95)) +
+  geom_vline(xintercept = c(0.85, 0.9, 0.95)) 
+```
+
+![](Imputation_Analysis_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+
 # Imputation Accuract by Individual or Breed
 
 We now.
@@ -78,4 +89,4 @@ p <- ggplot(data_ind, aes(reorder(breed, r2, FUN=median), y = r2, fill=breed)) +
 p
 ```
 
-![](Imputation_Analysis_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](Imputation_Analysis_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
