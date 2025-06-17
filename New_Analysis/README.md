@@ -1519,6 +1519,8 @@ We use a number of perl scripts to globally explore the concordance and $r^2$ va
 
 These scripts generate *txt* files we can explore in *R/BioConductor*.
 
+![histogram]("analysis/Imputation_Analysis_files/figure-gfm/unnamed-chunk-2-1.png")
+
 
 #### 2. Evaluation of raw SNP non-reference concordance back to truth dataset.
 
