@@ -86,7 +86,7 @@ ggplot(data_chunk, aes(x = r2_med, y = con_med, color = chrom)) +
 
 ```
 
-# Imputation Accuract by Individual or Breed
+# Imputation Accuracy by Individual or Breed
 
 We now look at individual breeds, it seems some are dragging down the imputation QC metrics signficantly with many well represented domestic dogs being >90 or 95%.
 

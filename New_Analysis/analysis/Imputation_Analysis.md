@@ -9,8 +9,8 @@ Anton Enright (<aje39@cam.ac.uk>)
   metrics](#global-analysis-of-imputation-metrics)
   - [Boxplots of Imputation QC
     values](#boxplots-of-imputation-qc-values)
-- [Imputation Accuract by Individual or
-  Breed](#imputation-accuract-by-individual-or-breed)
+- [Imputation Accuracy by Individual or
+  Breed](#imputation-accuracy-by-individual-or-breed)
   - [Heatmap of R2 values per chromosome and
     individual](#heatmap-of-r2-values-per-chromosome-and-individual)
   - [MAF analysis](#maf-analysis)
@@ -99,7 +99,7 @@ ggplot(data_chunk, aes(x = r2_med, y = con_med, color = chrom)) +
 
 ![](Imputation_Analysis_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
-# Imputation Accuract by Individual or Breed
+# Imputation Accuracy by Individual or Breed
 
 We now look at individual breeds, it seems some are dragging down the
 imputation QC metrics signficantly with many well represented domestic
