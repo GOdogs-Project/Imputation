@@ -22,6 +22,7 @@ the dataset for Eleanor Raffan and Jade Scardham. We have already
 discussed the analysis pipeline in the [README.md](../README.md)
 previously. The data generated there is here in the current analysis
 folder as: [`all_stats_by_chr.txt`](all_stats_by_chr.txt) and
+[`all_stats_by_chunk.txt`](all_stats_by_chunk.txt) and
 [`all_stats_by_individual.txt`](all_stats_by_individual.txt).
 
 Before we get started we will load some libraries needed, most
