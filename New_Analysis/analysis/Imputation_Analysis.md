@@ -111,7 +111,7 @@ colnames(data_ind)=c("chr","no","i","type","breed","sex","concordance","r2")
 data_ind$breed=as.factor(data_ind$breed)
 my_colours_breed <- viridisLite::viridis(length(levels(data_ind$breed)))
 
-p <- ggplot(data_ind, aes(reorder(breed, r2, decreasing=T, FUN=median), y = r2, fill=breed)) + scale_fill_manual(values = my_colours_breed) + geom_boxplot(outlier.size=0.3,lwd=0.1) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + theme(legend.text = element_text(size = 2)) + ggtitle("r2 values by Breed") + xlab("Chromosome") + theme(legend.key.size = unit(0.3, 'cm')) + theme(legend.position="none") + theme(axis.text=element_text(size=4)) + coord_cartesian(ylim = c(0, 1.0))
+p <- ggplot(data_ind, aes(reorder(breed, r2, decreasing=T, FUN=median), y = r2, fill=breed)) + scale_fill_manual(values = my_colours_breed) + geom_boxplot(outlier.size=0.3,lwd=0.1) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + theme(legend.text = element_text(size = 2)) + ggtitle("r2 values by Breed") + xlab("Individual Dog") + theme(legend.key.size = unit(0.3, 'cm')) + theme(legend.position="none") + theme(axis.text=element_text(size=4)) + coord_cartesian(ylim = c(0, 1.0))
 p
 ```
 
