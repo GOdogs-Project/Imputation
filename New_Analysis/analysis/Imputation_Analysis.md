@@ -9,8 +9,8 @@ Anton Enright (<aje39@cam.ac.uk>)
   metrics](#global-analysis-of-imputation-metrics)
   - [Boxplots of Imputation QC
     values](#boxplots-of-imputation-qc-values)
-- [Imputation Accuracy by Individual or
-  Breed](#imputation-accuracy-by-individual-or-breed)
+- [Imputation Accuracy by Breed or
+  Individual](#imputation-accuracy-by-breed-or-individual)
   - [Heatmap of R2 values per chromosome and
     individual](#heatmap-of-r2-values-per-chromosome-and-individual)
   - [MAF analysis](#maf-analysis)
@@ -99,7 +99,7 @@ ggplot(data_chunk, aes(x = r2_med, y = con_med, color = chrom)) +
 
 ![](Imputation_Analysis_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
-# Imputation Accuracy by Individual or Breed
+# Imputation Accuracy by Breed or Individual
 
 We now look at individual breeds, it seems some are dragging down the
 imputation QC metrics signficantly with many well represented domestic
@@ -111,11 +111,20 @@ colnames(data_ind)=c("chr","no","i","type","breed","sex","concordance","r2")
 data_ind$breed=as.factor(data_ind$breed)
 my_colours_breed <- viridisLite::viridis(length(levels(data_ind$breed)))
 
-p <- ggplot(data_ind, aes(reorder(breed, r2, decreasing=T, FUN=median), y = r2, fill=breed)) + scale_fill_manual(values = my_colours_breed) + geom_boxplot(outlier.size=0.3,lwd=0.1) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + theme(legend.text = element_text(size = 2)) + ggtitle("r2 values by Breed") + xlab("Individual Dog") + theme(legend.key.size = unit(0.3, 'cm')) + theme(legend.position="none") + theme(axis.text=element_text(size=4)) + coord_cartesian(ylim = c(0, 1.0))
+p <- ggplot(data_ind, aes(reorder(breed, r2, decreasing=T, FUN=median), y = r2, fill=breed)) + scale_fill_manual(values = my_colours_breed) + geom_boxplot(outlier.size=0.3,lwd=0.1) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + theme(legend.text = element_text(size = 2)) + ggtitle("r2 values by Breed") + xlab("Dog Breed") + theme(legend.key.size = unit(0.3, 'cm')) + theme(legend.position="none") + theme(axis.text=element_text(size=4)) + coord_cartesian(ylim = c(0, 1.0))
 p
 ```
 
 ![](Imputation_Analysis_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+
+Now lets do the same thing for individual dogs.
+
+``` r
+p <- ggplot(data_ind, aes(reorder(i, r2, decreasing=F, FUN=median), y = r2, fill=breed)) + scale_fill_manual(values = my_colours_breed) + geom_boxplot(outlier.size=0.3,lwd=0.1) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + theme(legend.text = element_text(size = 2)) + ggtitle("r2 values by Dog") + xlab("Individual Dog") + theme(legend.key.size = unit(0.3, 'cm')) + theme(legend.position="none") + theme(axis.text=element_text(size=4)) + coord_cartesian(ylim = c(0, 1.0))
+p
+```
+
+![](Imputation_Analysis_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
 ## Heatmap of R2 values per chromosome and individual
 
@@ -147,7 +156,7 @@ lhei=c(0.5, 6, 1.5)
 heatmap.2(as.matrix(d_mat),trace="none",Rowv = FALSE,cexCol = 0.4,cexRow=0.4,col=viridis(15, direction = -1),dendrogram="none",lmat=lmat, lhei=lhei)
 ```
 
-![](Imputation_Analysis_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](Imputation_Analysis_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
 ## MAF analysis
 
@@ -157,10 +166,10 @@ Finally we can look at MAF versus concordance and r2 values.
 ggplot(data,aes(x=maf,y=concordance,color=info)) + geom_point(alpha = .5, shape = 15) + geom_hline(yintercept = 0.85) + coord_cartesian(ylim = c(0, 1.0),xlim = c(0, 1.0)) + ggtitle("Concordance vs MAF")
 ```
 
-![](Imputation_Analysis_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](Imputation_Analysis_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
 ``` r
 ggplot(data,aes(x=maf,y=r2,color=info)) + geom_point(alpha = .5, shape = 15) + geom_hline(yintercept = 0.85) + coord_cartesian(ylim = c(0, 1.0),xlim = c(0, 1.0)) + ggtitle("r2 vs MAF")
 ```
 
-![](Imputation_Analysis_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](Imputation_Analysis_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
