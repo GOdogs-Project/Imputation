@@ -1510,12 +1510,16 @@ concord_type0 r2_type0
 
 #### Exploration of *Impute2* QC metrics.
 
-We use a number of perl scripts to globally explore the concordance and $r^2$ values:
+We use a number of custom perl scripts to globally explore the concordance and $r^2$ values:
 * Median, Standard Deviation, Average, Max and Min for:
 * Whole Chromosome chunks
 * Whole Chromosomes
 * Individuals by Chromosome
 * All Individuals globally
+* The scripts are as follows:
+  * [process_stats.pl](scripts/process_stats.pl)
+  * [process_persnp_stats.pl](scripts/process_persnp_stats.pl)
+  * [process_stats_individual.pl](scripts/process_stats_individual.pl)
 
 These scripts generate *txt* files we can explore in *R/BioConductor*.
 
