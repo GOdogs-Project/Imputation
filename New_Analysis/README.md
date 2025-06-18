@@ -1550,6 +1550,8 @@ Some key plots are shown here, but check the *R markdown* for a more complete pi
 
 ![boxplot2](analysis/Imputation_Analysis_files/figure-gfm/unnamed-chunk-4-1.png)
 
+![boxplot3](analysis/Imputation_Analysis_files/figure-gfm/unnamed-chunk-5-1.png)
+
 #### 2. Evaluation of raw SNP non-reference concordance back to truth dataset.
 
 To perform the concordance analysis we work as follows using the [concordance.pl](scripts/concordance.pl) script:
